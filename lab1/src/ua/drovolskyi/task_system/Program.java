@@ -5,7 +5,11 @@ import os.lab1.compfuncs.basic.DoubleOps;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.channels.Pipe;
+import java.nio.channels.SelectionKey;
+import java.nio.channels.Selector;
+import java.util.Iterator;
 import java.util.Optional;
+import java.util.Set;
 
 public class Program {
     public static void main(String[] args) {
@@ -23,47 +27,29 @@ public class Program {
         }
 */
 
+
+        // need to remove this
+        /*
         try {
-            Pipe pipe = Pipe.open();
-            Pipe.SourceChannel sourceChannel = pipe.source();
-
-
-            sourceChannel.configureBlocking(false);
-
-
-            ByteBuffer buf = ByteBuffer.allocate(48);
-
-            Thread th = new Thread(new TaskThread(0, pipe));
-            th.start();
-
-            while(sourceChannel.read(buf) == 0){
-
-            }
-
-            double result = buf.getDouble();
-            System.out.println("Result = " + result);
-
-            if (result == 0){
-                /*
-                while(sourceChannel.read(buf) == 0){
-
-                }
-                */
-
-
-                double result1 = buf.getDouble();
-                System.out.println("Result1 = " + result);
-            }
-
-
-
-            th.join();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+            Thread.sleep(30000000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
 
+
+         */
+
+        Manager manager = new Manager();
+
+        /*
+        try {
+            Thread.sleep(100000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        */
+        manager.run();
 
     }
 }

@@ -1,0 +1,37 @@
+"C:\Program Files\Java\jdk-18.0.2\bin\java.exe" "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2022.2.1\lib\idea_rt.jar=51506:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2022.2.1\bin" -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 -classpath D:\Repositories\operating-systems\lab1\out\production\lab1;D:\Repositories\operating-systems\lab1\lab1.jar ua.drovolskyi.task_system.Program
+
+Process finished with exit code 130
+
+java -classpath D:\Repositories\operating-systems\lab1\out\production\lab1;D:\Repositories\operating-systems\lab1\lab1.jar ua.drovolskyi.task_system.Program
+
+
+java -cp path/to/classFiles/ mypackage.Main
+
+
+D:\Repositories\operating-systems\lab1\lab1.jar ua.drovolskyi.task_system.Program
+
+
+java -cp D:\Repositories\operating-systems\lab1\out\production\lab1 ua.drovolskyi.task_system.Program -jar D:\Repositories\operating-systems\lab1\lab1.jar
+
+
+
+
+D:\Repositories\operating-systems\lab1\lab1.jar
+
+java -cp D:\Repositories\operating-systems\lab1\out\production\lab1;D:\Repositories\operating-systems\lab1\lab1.jar ua.drovolskyi.task_system.Program
+
+java -cp D:\Repositories\operating-systems\lab1\out\production\lab1 ua.drovolskyi.task_system.Program -cp D:\Repositories\operating-systems\lab1\lab1.jar os.lab1.compfuncs.advanced.DoubleOps 
+
+
+
+https://stackoverflow.com/a/2864634 - як запускати java з консолі
+https://stackoverflow.com/questions/6780678/run-class-in-jar-file
+https://www.baeldung.com/java-run-jar-with-arguments
+
+
+
+Works if .jar is not needed
+java -cp D:\Repositories\operating-systems\lab1\out\production\lab1 ua.drovolskyi.task_system.Program
+
+Це запускає готовий jar-файл, де є main() і виконує його
+java -jar D:\Repositories\operating-systems\lab1\out\artifacts\lab1_jar\lab1.jar
