@@ -49,7 +49,7 @@ public class TaskThread implements Runnable{
             }
         } catch (RuntimeException e) {
             throw new RuntimeException(e);
-            // report about hard fail or what????
+            // no handling, because f() and g() considered not throwing exceptions
         } catch (IOException e){
             throw new RuntimeException(e);
         }
@@ -64,6 +64,7 @@ public class TaskThread implements Runnable{
         buf.flip();
 
         Pipe.SinkChannel sinkChannel = pipe.sink();
+        sinkChannel.configureBlocking(false);
         while(buf.hasRemaining()) {
             sinkChannel.write(buf);
         }
@@ -77,6 +78,7 @@ public class TaskThread implements Runnable{
         buf.flip();
 
         Pipe.SinkChannel sinkChannel = pipe.sink();
+        sinkChannel.configureBlocking(false);
         while(buf.hasRemaining()) {
             sinkChannel.write(buf);
         }

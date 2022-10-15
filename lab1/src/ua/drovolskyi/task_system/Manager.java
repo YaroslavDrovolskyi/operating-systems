@@ -21,6 +21,8 @@ public class Manager {
     private TaskInfo infoTask2 = new TaskInfo(5);
     private Function<Integer, Optional<Optional<Double>>> f;
     private Function<Integer, Optional<Optional<Double>>> g;
+    private Pipe pipeTask1;
+    private Pipe pipeTask2;
 
 
     public Manager(){
@@ -78,6 +80,17 @@ public class Manager {
             while(true){
                 String input = scanner.next();
                 if (input.trim().equalsIgnoreCase("q")){
+                    try{
+                        if (pipeTask1 != null){
+                            pipeTask1.source().close();
+                        }
+                        if (pipeTask2 != null){
+                            pipeTask2.source().close();
+                        }
+                    }
+                    catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
                     scanner.close();
                     System.exit(0);
                 }
@@ -112,11 +125,11 @@ public class Manager {
 
         try {
             Selector selector = Selector.open();
-            Pipe pipe1 = Pipe.open();
-            Pipe pipe2 = Pipe.open();
+            pipeTask1 = Pipe.open();
+            pipeTask2 = Pipe.open();
 
-            Pipe.SourceChannel sourceChannelTask1 = pipe1.source();
-            Pipe.SourceChannel sourceChannelTask2 = pipe2.source();
+            Pipe.SourceChannel sourceChannelTask1 = pipeTask1.source();
+            Pipe.SourceChannel sourceChannelTask2 = pipeTask2.source();
 
             sourceChannelTask1.configureBlocking(false);
             sourceChannelTask2.configureBlocking(false);
@@ -130,9 +143,9 @@ public class Manager {
 
             // create and start task threads
             Thread threadTask1 = new Thread(new TaskThread(x, f,
-                    infoTask1.getMaxComputationAttempts(), pipe1));
+                    infoTask1.getMaxComputationAttempts(), pipeTask1));
             Thread threadTask2 = new Thread(new TaskThread(x, g,
-                    infoTask2.getMaxComputationAttempts(), pipe2));
+                    infoTask2.getMaxComputationAttempts(), pipeTask2));
 
             threadTask1.setDaemon(true);
             threadTask2.setDaemon(true);
@@ -170,6 +183,9 @@ public class Manager {
                     }
                 }
             }
+
+            sourceChannelTask1.close();
+            sourceChannelTask2.close();
 
             calculateResult();
 
