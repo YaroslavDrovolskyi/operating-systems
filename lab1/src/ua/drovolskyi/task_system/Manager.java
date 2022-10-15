@@ -5,10 +5,7 @@ import java.nio.ByteBuffer;
 import java.nio.channels.Pipe;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
-import java.util.Iterator;
-import java.util.Optional;
-import java.util.Scanner;
-import java.util.Set;
+import java.util.*;
 import java.util.function.Function;
 import os.lab1.compfuncs.advanced.DoubleOps;
 
@@ -29,6 +26,19 @@ public class Manager {
         // add termination hook
         Runtime current = Runtime.getRuntime();
         current.addShutdownHook(new Thread(()->{
+
+            try{
+                if (pipeTask1 != null){
+                    pipeTask1.source().close();
+                }
+                if (pipeTask2 != null){
+                    pipeTask2.source().close();
+                }
+            }
+            catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
             if (isComputingStarted){
                 if (isCalculatedResult){
 //                    System.out.println("Cancellation called: computations finished, result printed");
@@ -71,28 +81,25 @@ public class Manager {
             else{
                 System.out.println("Computations cancelled. They haven't started yet");
             }
-                })
+            })
         );
 
         // create cancellation-input waiting thread
         cancellationWaitingThread = new Thread(()->{
             Scanner scanner = new Scanner(System.in);
             while(true){
-                String input = scanner.next();
-                if (input.trim().equalsIgnoreCase("q")){
-                    try{
-                        if (pipeTask1 != null){
-                            pipeTask1.source().close();
-                        }
-                        if (pipeTask2 != null){
-                            pipeTask2.source().close();
-                        }
+                try{
+                    String input = scanner.next();
+
+                    if (input.trim().equalsIgnoreCase("q")){
+                        scanner.close();
+                        System.exit(0);
                     }
-                    catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
+                }
+                catch(NoSuchElementException e){ // appears when terminate using Ctrl+C
                     scanner.close();
-                    System.exit(0);
+                    break;
+                    // ignore because it is normal
                 }
             }
         });
@@ -195,22 +202,28 @@ public class Manager {
     }
 
     private void scanX(){
+        System.out.println("Hello! If you want to cancel computations, enter [q] at any time");
         Scanner scanner = new Scanner(System.in);
         boolean stop = false;
         while(!stop){
-            System.out.print("Enter x: ");
-            String input = scanner.next();
-            if (input.trim().equalsIgnoreCase("q")){
-                scanner.close();
-                System.exit(0);
-            }
-
             try{
+                System.out.print("Enter x: ");
+                String input = scanner.next();
+                if (input.trim().equalsIgnoreCase("q")){
+                    scanner.close();
+                    System.exit(0);
+                }
+
                 x = Integer.parseInt(input);
                 stop = true;
             }
             catch (NumberFormatException e){
                 System.out.println("Input is incorrect");
+            }
+            catch (NoSuchElementException e){ // appears when terminate using Ctrl+C
+                scanner.close();
+                stop = true;
+                // ignore because it is normal
             }
         }
     }
