@@ -1,12 +1,16 @@
 package ua.drovolskyi.task_system;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.nio.ByteBuffer;
 import java.nio.channels.Pipe;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.util.*;
 import java.util.function.Function;
+import java.util.zip.InflaterInputStream;
+
 import os.lab1.compfuncs.advanced.DoubleOps;
 
 public class Manager {
@@ -86,20 +90,23 @@ public class Manager {
 
         // create cancellation-input waiting thread
         cancellationWaitingThread = new Thread(()->{
-            Scanner scanner = new Scanner(System.in);
+            BufferedReader reader = new BufferedReader(
+                    new InputStreamReader(System.in));
             while(true){
                 try{
-                    String input = scanner.next();
+                    while(!reader.ready()){
+                        Thread.sleep(200);
+                    }
+                    String input = reader.readLine();
 
                     if (input.trim().equalsIgnoreCase("q")){
-                        scanner.close();
                         System.exit(0);
                     }
                 }
-                catch(NoSuchElementException e){ // appears when terminate using Ctrl+C
-                    scanner.close();
-                    break;
-                    // ignore because it is normal
+                catch (IOException e) {
+                    throw new RuntimeException(e);
+                } catch (InterruptedException e) { // appears when terminate using Ctrl+C
+                    return;
                 }
             }
         });
@@ -203,14 +210,18 @@ public class Manager {
 
     private void scanX(){
         System.out.println("Hello! If you want to cancel computations, enter [q] at any time");
-        Scanner scanner = new Scanner(System.in);
+        BufferedReader reader = new BufferedReader(
+                new InputStreamReader(System.in));
         boolean stop = false;
         while(!stop){
             try{
                 System.out.print("Enter x: ");
-                String input = scanner.next();
+                while(!reader.ready()){
+                    Thread.sleep(200);
+                }
+
+                String input = reader.readLine();
                 if (input.trim().equalsIgnoreCase("q")){
-                    scanner.close();
                     System.exit(0);
                 }
 
@@ -219,11 +230,10 @@ public class Manager {
             }
             catch (NumberFormatException e){
                 System.out.println("Input is incorrect");
-            }
-            catch (NoSuchElementException e){ // appears when terminate using Ctrl+C
-                scanner.close();
-                stop = true;
-                // ignore because it is normal
+            } catch (IOException e) {
+
+            } catch (InterruptedException e) { // when terminated with Ctrl+C
+                return;
             }
         }
     }
