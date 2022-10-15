@@ -1,22 +1,24 @@
 package ua.drovolskyi.task_system;
 
-import os.lab1.compfuncs.advanced.DoubleOps;
-
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.channels.Pipe;
 import java.util.Optional;
-import java.util.concurrent.Callable;
+import java.util.function.Function;
 
 public class TaskThread implements Runnable{
-    private Pipe pipe;
     private final int x;
-    private final int ATTEMPTS_WHEN_SOFT_FAIL = 5;
+    private Function<Integer, Optional<Optional<Double>>> function;
+    private final int MAX_COMPUTATION_ATTEMPTS;
+    private Pipe pipe;
 
 
-    public TaskThread(int x, Pipe pipe){
-        this.pipe = pipe;
+    public TaskThread(int x, Function<Integer, Optional<Optional<Double>>> function,
+                      final int MAX_COMPUTATION_ATTEMPTS, Pipe pipe){
         this.x = x;
+        this.function = function;
+        this.MAX_COMPUTATION_ATTEMPTS = MAX_COMPUTATION_ATTEMPTS;
+        this.pipe = pipe;
     }
 
     @Override
@@ -24,8 +26,8 @@ public class TaskThread implements Runnable{
         try {
             Optional<Optional<Double>> softOptional = null;
 
-            for (int i = 0; i <= ATTEMPTS_WHEN_SOFT_FAIL; i++){
-                softOptional = DoubleOps.trialF(x);
+            for (int i = 0; i < MAX_COMPUTATION_ATTEMPTS; i++){
+                softOptional = function.apply(x);
                 if (softOptional.isPresent()){
                     break;
                 }
@@ -45,7 +47,7 @@ public class TaskThread implements Runnable{
             else{
                 reportFailure(1); // report about soft fail
             }
-        } catch (InterruptedException e) {
+        } catch (RuntimeException e) {
             throw new RuntimeException(e);
             // report about hard fail or what????
         } catch (IOException e){

@@ -1,6 +1,6 @@
 package ua.drovolskyi.task_system;
 
-import os.lab1.compfuncs.basic.DoubleOps;
+
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -9,6 +9,7 @@ import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.util.Iterator;
 import java.util.Optional;
+import java.util.Scanner;
 import java.util.Set;
 
 public class Program {
@@ -50,6 +51,21 @@ public class Program {
 
         */
         manager.run();
+
+/*
+        new Thread(()->{
+            Scanner scanner = new Scanner(System.in);
+            String input = scanner.nextLine();
+            System.out.println("Hello from thread-1: " + input);
+        }).start();
+
+        new Thread(()->{
+            Scanner scanner = new Scanner(System.in);
+            String input = scanner.nextLine();
+            System.out.println("Hello from thread-2: " + input);
+        }).start();
+
+ */
 
     }
 }
