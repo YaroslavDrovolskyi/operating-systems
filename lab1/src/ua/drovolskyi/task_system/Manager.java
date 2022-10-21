@@ -239,7 +239,7 @@ public class Manager {
         int taskId = (Integer)(key.attachment());
         TaskInfo currentTaskInfo = taskId == 1 ? infoTask1 : infoTask2;
 
-        ByteBuffer buf = ByteBuffer.allocate(16);
+        ByteBuffer buf = ByteBuffer.allocate(12);
 
         // read task result into buffer
         Pipe.SourceChannel channel = (Pipe.SourceChannel)(key.channel());
@@ -247,7 +247,7 @@ public class Manager {
         buf.flip(); // switch buffer from writing to reading mode
 
         // process result & fill taskInfo
-        double returningCode = buf.getDouble();
+        int returningCode = buf.getInt();
 
         if (returningCode == 0){
             currentTaskInfo.setStatus(TaskInfo.Status.FINISHED_SUCCESSFULLY);
@@ -259,15 +259,15 @@ public class Manager {
             currentTaskInfo.setStatus(TaskInfo.Status.FINISHED_HARDFAIL);
         }
 
-        /*
+//////////////////////////////////////////////////////////////////////////////
         System.out.println("Task #" + (Integer)key.attachment());
         System.out.println("Returning code = " + returningCode);
         if (returningCode == 0){
             buf.rewind();
             buf.getDouble();
-            System.out.println("Result = " + buf.getDouble() + "\n");
+            System.out.println("Result = " + currentTaskInfo.getResult() + "\n");
         }
-        */
+
         return currentTaskInfo;
     }
 
@@ -276,7 +276,7 @@ public class Manager {
         if (infoTask1.isFinishedSuccessfully() &&
                 infoTask2.isFinishedSuccessfully()){
             double resultF = infoTask1.getResult();
-            double resultG = infoTask1.getResult();
+            double resultG = infoTask2.getResult();
             double result = resultF + resultG;
 
             System.out.println("Result = " + result);

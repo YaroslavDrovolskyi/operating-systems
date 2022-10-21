@@ -56,29 +56,27 @@ public class TaskThread implements Runnable{
     }
 
     private void reportResult(Double result) throws IOException {
-        ByteBuffer buf = ByteBuffer.allocate(16);
+        ByteBuffer buf = ByteBuffer.allocate(12);
         buf.clear();
-        buf.putDouble(0);
+        buf.putInt(0);
         buf.putDouble(result);
 
         buf.flip();
 
         Pipe.SinkChannel sinkChannel = pipe.sink();
-        sinkChannel.configureBlocking(false);
         while(buf.hasRemaining()) {
             sinkChannel.write(buf);
         }
     }
 
-    private void reportFailure(double failureId) throws IOException {
-        ByteBuffer buf = ByteBuffer.allocate(8);
+    private void reportFailure(int failureId) throws IOException {
+        ByteBuffer buf = ByteBuffer.allocate(4);
         buf.clear();
-        buf.putDouble(failureId);
+        buf.putInt(failureId);
 
         buf.flip();
 
         Pipe.SinkChannel sinkChannel = pipe.sink();
-        sinkChannel.configureBlocking(false);
         while(buf.hasRemaining()) {
             sinkChannel.write(buf);
         }
