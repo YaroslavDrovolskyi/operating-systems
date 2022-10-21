@@ -154,7 +154,6 @@ public class Manager {
 
             infoTask1.setStatus(TaskInfo.Status.STARTED);
             infoTask2.setStatus(TaskInfo.Status.STARTED);
-//            isComputingStarted = true;
             status = Status.COMPUTATIONS_STARTED;
 
             threadTask1.start();
@@ -190,7 +189,7 @@ public class Manager {
             sourceChannelTask1.close();
             sourceChannelTask2.close();
 
-            calculateResult();
+            calculateAndPrintResult();
 
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -248,7 +247,7 @@ public class Manager {
             currentTaskInfo.setStatus(TaskInfo.Status.FINISHED_HARDFAIL);
         }
 
-//////////////////////////////////////////////////////////////////////////////
+        /*
         System.out.println("Task #" + (Integer)key.attachment());
         System.out.println("Returning code = " + returningCode);
         if (returningCode == 0){
@@ -256,12 +255,13 @@ public class Manager {
             buf.getDouble();
             System.out.println("Result = " + currentTaskInfo.getResult() + "\n");
         }
+         */
 
         return currentTaskInfo;
     }
 
     // only this method will print result (except cancellation from user)
-    private void calculateResult(){
+    private void calculateAndPrintResult(){
         if (infoTask1.isFinishedSuccessfully() &&
                 infoTask2.isFinishedSuccessfully()){
             double resultF = infoTask1.getResult();
@@ -271,7 +271,7 @@ public class Manager {
             System.out.println("Result = " + result);
         }
         else{
-            System.out.println("Computations failed because of: ");
+            System.out.println("Computations failed. Reason is: ");
             if (infoTask1.getStatus() == TaskInfo.Status.FINISHED_SOFTFAIL){
                 System.out.println("f(x) - soft fail, " +
                         "max number of attempts reached (" + infoTask1.getMaxComputationAttempts() +")");
@@ -287,7 +287,6 @@ public class Manager {
                 System.out.println("g(x) - hard fail");
             }
         }
-//        isCalculatedResult = true;
         status = Status.RESULT_CALCULATED_AND_PRINTED;
     }
 

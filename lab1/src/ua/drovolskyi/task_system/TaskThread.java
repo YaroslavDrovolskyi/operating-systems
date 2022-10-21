@@ -38,14 +38,14 @@ public class TaskThread implements Runnable{
 
                 if (hardOptional.isPresent()){
                     double result = hardOptional.get();
-                    reportResult(result);
+                    sendResult(result);
                 }
                 else{
-                    reportFailure(2);// report about hard fail
+                    sendFailure(2); // report manager about hard fail
                 }
             }
             else{
-                reportFailure(1); // report about soft fail
+                sendFailure(1); // report manager about soft fail
             }
         } catch (RuntimeException e) {
             throw new RuntimeException(e);
@@ -55,7 +55,7 @@ public class TaskThread implements Runnable{
         }
     }
 
-    private void reportResult(Double result) throws IOException {
+    private void sendResult(Double result) throws IOException {
         ByteBuffer buf = ByteBuffer.allocate(12);
         buf.clear();
         buf.putInt(0);
@@ -69,7 +69,7 @@ public class TaskThread implements Runnable{
         }
     }
 
-    private void reportFailure(int failureId) throws IOException {
+    private void sendFailure(int failureId) throws IOException {
         ByteBuffer buf = ByteBuffer.allocate(4);
         buf.clear();
         buf.putInt(failureId);
