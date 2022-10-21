@@ -11,8 +11,7 @@ import os.lab1.compfuncs.advanced.DoubleOps;
 
 public class Manager {
     private int x;
-    private boolean isComputingStarted = false;
-    private boolean isCalculatedResult = false;
+    Status status = Status.COMPUTATIONS_NOT_STARTED;
     private Thread cancellationWaitingThread;
     private TaskInfo infoTask1 = new TaskInfo(5);
     private TaskInfo infoTask2 = new TaskInfo(5);
@@ -39,11 +38,13 @@ public class Manager {
                 throw new RuntimeException(e);
             }
 
-            if (isComputingStarted){
-                if (isCalculatedResult){
-//                    System.out.println("Cancellation called: computations finished, result printed");
+
+            switch(status){
+                case COMPUTATIONS_NOT_STARTED:{
+                    System.out.println("Computations cancelled. They haven't started yet");
+                    break;
                 }
-                else{ // calculating is in process
+                case COMPUTATIONS_STARTED: { // calculating is in progress
                     System.out.println("Computations cancelled:");
                     switch (infoTask1.getStatus()){
                         case STARTED:
@@ -76,30 +77,24 @@ public class Manager {
                             System.out.println("g(x) - computed");
                             break;
                     }
+                    break;
+                }
+                case RESULT_CALCULATED_AND_PRINTED:{
+                    // nothing need to print, because result is already printed
+                    break;
                 }
             }
-            else{
-                System.out.println("Computations cancelled. They haven't started yet");
-            }
-            })
-        );
+        }));
 
         // create cancellation-input waiting thread
         cancellationWaitingThread = new Thread(()->{
             Scanner scanner = new Scanner(System.in);
             while(true){
-                try{
-                    String input = scanner.next();
+                String input = scanner.next();
 
-                    if (input.trim().equalsIgnoreCase("q")){
-                        scanner.close();
-                        System.exit(0);
-                    }
-                }
-                catch(NoSuchElementException e){ // appears when terminate using Ctrl+C
+                if (input.trim().equalsIgnoreCase("q")){
                     scanner.close();
-                    break;
-                    // ignore because it is normal
+                    System.exit(0);
                 }
             }
         });
@@ -159,7 +154,8 @@ public class Manager {
 
             infoTask1.setStatus(TaskInfo.Status.STARTED);
             infoTask2.setStatus(TaskInfo.Status.STARTED);
-            isComputingStarted = true;
+//            isComputingStarted = true;
+            status = Status.COMPUTATIONS_STARTED;
 
             threadTask1.start();
             threadTask2.start();
@@ -204,26 +200,19 @@ public class Manager {
     private void scanX(){
         System.out.println("Hello! If you want to cancel computations, enter [q] at any time");
         Scanner scanner = new Scanner(System.in);
-        boolean stop = false;
-        while(!stop){
-            try{
-                System.out.print("Enter x: ");
-                String input = scanner.next();
-                if (input.trim().equalsIgnoreCase("q")){
-                    scanner.close();
-                    System.exit(0);
-                }
-
-                x = Integer.parseInt(input);
-                stop = true;
-            }
-            catch (NumberFormatException e){
-                System.out.println("Input is incorrect");
-            }
-            catch (NoSuchElementException e){ // appears when terminate using Ctrl+C
+        while(true){
+            System.out.print("Enter x: ");
+            String input = scanner.next();
+            if (input.trim().equalsIgnoreCase("q")){
                 scanner.close();
-                stop = true;
-                // ignore because it is normal
+                System.exit(0);
+            }
+
+            try{
+                x = Integer.parseInt(input);
+                break;
+            } catch (NumberFormatException e){
+                System.out.println("Input must be integer value");
             }
         }
     }
@@ -298,6 +287,15 @@ public class Manager {
                 System.out.println("g(x) - hard fail");
             }
         }
-        isCalculatedResult = true;
+//        isCalculatedResult = true;
+        status = Status.RESULT_CALCULATED_AND_PRINTED;
+    }
+
+
+
+    public static enum Status {
+        COMPUTATIONS_NOT_STARTED,
+        COMPUTATIONS_STARTED,
+        RESULT_CALCULATED_AND_PRINTED
     }
 }
