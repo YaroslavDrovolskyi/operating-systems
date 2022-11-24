@@ -123,16 +123,16 @@ public class Scheduling {
         //For debug
         ////////////////////////////////////////////////////////////////////////
         List<Process> processes = new LinkedList<>();
-        processes.add(new Process(1, 1000, 200, 12));
+        processes.add(new Process(1, 10, 2, 150));
         processes.add(new Process(2, 1500, 200, 50));
         processes.add(new Process(3, 500, 200, 100));
         processes.add(new Process(4, 750, 200, 150));
-        processes.add(new Process(5, 100, 5, 10000));
+        processes.add(new Process(5, 100, 50, 10000));
 
         SchedulingAlgorithm algorithm = new SchedulingAlgorithm(
-                5000,
+                5001, 2000, 25,
                 "src/main/resources/summary-processes.txt",
-                "src/main/resources/summary-processes.txt");
+                "src/main/resources/debug-processes.txt");
         try {
             algorithm.run(processes);
         } catch (FileNotFoundException e) {
@@ -141,6 +141,7 @@ public class Scheduling {
 
 
         // ////////////////////////////////////////////////////////////////////////////////////////////////
+        // print results using: results returned by algorithm, input data, initial list of processes
         try {
             //BufferedWriter out = new BufferedWriter(new FileWriter(resultsFile));
             PrintStream out = new PrintStream(new FileOutputStream(resultsFile));

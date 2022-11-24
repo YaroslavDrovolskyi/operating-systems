@@ -1,0 +1,490 @@
+RUNTIME: 0 ms
+Queues:
+Priority 4: 1 2 3 4 5 
+Priority 3: 
+Priority 2: 
+Priority 1: 
+Priority 0: 
+
+Blocked processes: [no processes]
+
+2 ms, Process 1 I/O blocked ( priority: 4, used 2 ms of 10 ms, blocked 1 times, used before blocking: 2 ms of 2 ms )
+
+
+RUNTIME: 2 ms
+Queues:
+Priority 4: 2 3 4 5 
+Priority 3: 
+Priority 2: 
+Priority 1: 
+Priority 0: 
+
+Blocked processes: 1(152ms)  
+
+27 ms, Process 2 used burst ( priority: 3, used 25 ms of 1500 ms, blocked 0 times, used before blocking: 25 ms of 200 ms )
+
+
+RUNTIME: 27 ms
+Queues:
+Priority 4: 3 4 5 
+Priority 3: 2 
+Priority 2: 
+Priority 1: 
+Priority 0: 
+
+Blocked processes: 1(152ms)  
+
+52 ms, Process 3 used burst ( priority: 3, used 25 ms of 500 ms, blocked 0 times, used before blocking: 25 ms of 200 ms )
+
+
+RUNTIME: 52 ms
+Queues:
+Priority 4: 4 5 
+Priority 3: 2 3 
+Priority 2: 
+Priority 1: 
+Priority 0: 
+
+Blocked processes: 1(152ms)  
+
+77 ms, Process 4 used burst ( priority: 3, used 25 ms of 750 ms, blocked 0 times, used before blocking: 25 ms of 200 ms )
+
+
+RUNTIME: 77 ms
+Queues:
+Priority 4: 5 
+Priority 3: 2 3 4 
+Priority 2: 
+Priority 1: 
+Priority 0: 
+
+Blocked processes: 1(152ms)  
+
+102 ms, Process 5 used burst ( priority: 3, used 25 ms of 100 ms, blocked 0 times, used before blocking: 25 ms of 50 ms )
+
+
+RUNTIME: 102 ms
+Queues:
+Priority 4: 
+Priority 3: 2 3 4 5 
+Priority 2: 
+Priority 1: 
+Priority 0: 
+
+Blocked processes: 1(152ms)  
+
+152 ms, Process 2 used burst ( priority: 2, used 75 ms of 1500 ms, blocked 0 times, used before blocking: 75 ms of 200 ms )
+
+
+RUNTIME: 152 ms
+Queues:
+Priority 4: 1 
+Priority 3: 3 4 5 
+Priority 2: 2 
+Priority 1: 
+Priority 0: 
+
+Blocked processes: [no processes]
+
+154 ms, Process 1 I/O blocked ( priority: 4, used 4 ms of 10 ms, blocked 2 times, used before blocking: 2 ms of 2 ms )
+
+
+RUNTIME: 154 ms
+Queues:
+Priority 4: 
+Priority 3: 3 4 5 
+Priority 2: 2 
+Priority 1: 
+Priority 0: 
+
+Blocked processes: 1(304ms)  
+
+204 ms, Process 3 used burst ( priority: 2, used 75 ms of 500 ms, blocked 0 times, used before blocking: 75 ms of 200 ms )
+
+
+RUNTIME: 204 ms
+Queues:
+Priority 4: 
+Priority 3: 4 5 
+Priority 2: 2 3 
+Priority 1: 
+Priority 0: 
+
+Blocked processes: 1(304ms)  
+
+254 ms, Process 4 used burst ( priority: 2, used 75 ms of 750 ms, blocked 0 times, used before blocking: 75 ms of 200 ms )
+
+
+RUNTIME: 254 ms
+Queues:
+Priority 4: 
+Priority 3: 5 
+Priority 2: 2 3 4 
+Priority 1: 
+Priority 0: 
+
+Blocked processes: 1(304ms)  
+
+279 ms, Process 5 I/O blocked ( priority: 3, used 50 ms of 100 ms, blocked 1 times, used before blocking: 50 ms of 50 ms )
+
+
+RUNTIME: 279 ms
+Queues:
+Priority 4: 
+Priority 3: 
+Priority 2: 2 3 4 
+Priority 1: 
+Priority 0: 
+
+Blocked processes: 1(304ms)  5(10279ms)  
+
+379 ms, Process 2 used burst ( priority: 1, used 175 ms of 1500 ms, blocked 0 times, used before blocking: 175 ms of 200 ms )
+
+
+RUNTIME: 379 ms
+Queues:
+Priority 4: 1 
+Priority 3: 
+Priority 2: 3 4 
+Priority 1: 2 
+Priority 0: 
+
+Blocked processes: 5(10279ms)  
+
+381 ms, Process 1 I/O blocked ( priority: 4, used 6 ms of 10 ms, blocked 3 times, used before blocking: 2 ms of 2 ms )
+
+
+RUNTIME: 381 ms
+Queues:
+Priority 4: 
+Priority 3: 
+Priority 2: 3 4 
+Priority 1: 2 
+Priority 0: 
+
+Blocked processes: 1(531ms)  5(10279ms)  
+
+481 ms, Process 3 used burst ( priority: 1, used 175 ms of 500 ms, blocked 0 times, used before blocking: 175 ms of 200 ms )
+
+
+RUNTIME: 481 ms
+Queues:
+Priority 4: 
+Priority 3: 
+Priority 2: 4 
+Priority 1: 2 3 
+Priority 0: 
+
+Blocked processes: 1(531ms)  5(10279ms)  
+
+581 ms, Process 4 used burst ( priority: 1, used 175 ms of 750 ms, blocked 0 times, used before blocking: 175 ms of 200 ms )
+
+
+RUNTIME: 581 ms
+Queues:
+Priority 4: 1 
+Priority 3: 
+Priority 2: 
+Priority 1: 2 3 4 
+Priority 0: 
+
+Blocked processes: 5(10279ms)  
+
+583 ms, Process 1 I/O blocked ( priority: 4, used 8 ms of 10 ms, blocked 4 times, used before blocking: 2 ms of 2 ms )
+
+
+RUNTIME: 583 ms
+Queues:
+Priority 4: 
+Priority 3: 
+Priority 2: 
+Priority 1: 2 3 4 
+Priority 0: 
+
+Blocked processes: 1(733ms)  5(10279ms)  
+
+608 ms, Process 2 I/O blocked ( priority: 1, used 200 ms of 1500 ms, blocked 1 times, used before blocking: 200 ms of 200 ms )
+
+
+RUNTIME: 608 ms
+Queues:
+Priority 4: 
+Priority 3: 
+Priority 2: 
+Priority 1: 3 4 
+Priority 0: 
+
+Blocked processes: 2(658ms)  1(733ms)  5(10279ms)  
+
+633 ms, Process 3 I/O blocked ( priority: 1, used 200 ms of 500 ms, blocked 1 times, used before blocking: 200 ms of 200 ms )
+
+
+RUNTIME: 633 ms
+Queues:
+Priority 4: 
+Priority 3: 
+Priority 2: 
+Priority 1: 4 
+Priority 0: 
+
+Blocked processes: 2(658ms)  1(733ms)  3(733ms)  5(10279ms)  
+
+658 ms, Process 4 I/O blocked ( priority: 1, used 200 ms of 750 ms, blocked 1 times, used before blocking: 200 ms of 200 ms )
+
+
+RUNTIME: 658 ms
+Queues:
+Priority 4: 
+Priority 3: 
+Priority 2: 
+Priority 1: 2 
+Priority 0: 
+
+Blocked processes: 1(733ms)  3(733ms)  4(808ms)  5(10279ms)  
+
+858 ms, Process 2 I/O blocked ( priority: 1, used 400 ms of 1500 ms, blocked 2 times, used before blocking: 200 ms of 200 ms )
+
+
+RUNTIME: 858 ms
+Queues:
+Priority 4: 1 
+Priority 3: 
+Priority 2: 
+Priority 1: 3 4 
+Priority 0: 
+
+Blocked processes: 2(908ms)  5(10279ms)  
+
+860 ms, Process 1 is done ( priority: 4, used 10 ms of 10 ms, blocked 4 times, used before blocking: 2 ms of 2 ms )
+
+
+RUNTIME: 860 ms
+Queues:
+Priority 4: 
+Priority 3: 
+Priority 2: 
+Priority 1: 3 4 
+Priority 0: 
+
+Blocked processes: 2(908ms)  5(10279ms)  
+
+1060 ms, Process 3 I/O blocked ( priority: 1, used 400 ms of 500 ms, blocked 2 times, used before blocking: 200 ms of 200 ms )
+
+
+RUNTIME: 1060 ms
+Queues:
+Priority 4: 
+Priority 3: 
+Priority 2: 
+Priority 1: 4 2 
+Priority 0: 
+
+Blocked processes: 3(1160ms)  5(10279ms)  
+
+1260 ms, Process 4 I/O blocked ( priority: 1, used 400 ms of 750 ms, blocked 2 times, used before blocking: 200 ms of 200 ms )
+
+
+RUNTIME: 1260 ms
+Queues:
+Priority 4: 
+Priority 3: 
+Priority 2: 
+Priority 1: 2 3 
+Priority 0: 
+
+Blocked processes: 4(1410ms)  5(10279ms)  
+
+1460 ms, Process 2 I/O blocked ( priority: 1, used 600 ms of 1500 ms, blocked 3 times, used before blocking: 200 ms of 200 ms )
+
+
+RUNTIME: 1460 ms
+Queues:
+Priority 4: 
+Priority 3: 
+Priority 2: 
+Priority 1: 3 4 
+Priority 0: 
+
+Blocked processes: 2(1510ms)  5(10279ms)  
+
+1560 ms, Process 3 is done ( priority: 1, used 500 ms of 500 ms, blocked 2 times, used before blocking: 100 ms of 200 ms )
+
+
+RUNTIME: 1560 ms
+Queues:
+Priority 4: 
+Priority 3: 
+Priority 2: 
+Priority 1: 4 2 
+Priority 0: 
+
+Blocked processes: 5(10279ms)  
+
+1760 ms, Process 4 I/O blocked ( priority: 1, used 600 ms of 750 ms, blocked 3 times, used before blocking: 200 ms of 200 ms )
+
+
+RUNTIME: 1760 ms
+Queues:
+Priority 4: 
+Priority 3: 
+Priority 2: 
+Priority 1: 2 
+Priority 0: 
+
+Blocked processes: 4(1910ms)  5(10279ms)  
+
+1960 ms, Process 2 I/O blocked ( priority: 1, used 800 ms of 1500 ms, blocked 4 times, used before blocking: 200 ms of 200 ms )
+
+
+RUNTIME: 1960 ms
+Queues:
+Priority 4: 
+Priority 3: 
+Priority 2: 
+Priority 1: 4 
+Priority 0: 
+
+Blocked processes: 2(2010ms)  5(10279ms)  
+
+2000 ms, Process 4 used burst ( priority: 0, used 640 ms of 750 ms, blocked 3 times, used before blocking: 40 ms of 200 ms )
+
+
+RUNTIME: 2000 ms
+Queues:
+Priority 4: 
+Priority 3: 
+Priority 2: 
+Priority 1: 
+Priority 0: 4 
+
+Blocked processes: 2(2010ms)  5(10279ms)  
+
+2000 ms, Reset priority
+2025 ms, Process 4 used burst ( priority: 3, used 665 ms of 750 ms, blocked 3 times, used before blocking: 65 ms of 200 ms )
+
+
+RUNTIME: 2025 ms
+Queues:
+Priority 4: 
+Priority 3: 4 
+Priority 2: 
+Priority 1: 2 
+Priority 0: 
+
+Blocked processes: 5(10279ms)  
+
+2075 ms, Process 4 used burst ( priority: 2, used 715 ms of 750 ms, blocked 3 times, used before blocking: 115 ms of 200 ms )
+
+
+RUNTIME: 2075 ms
+Queues:
+Priority 4: 
+Priority 3: 
+Priority 2: 4 
+Priority 1: 2 
+Priority 0: 
+
+Blocked processes: 5(10279ms)  
+
+2110 ms, Process 4 is done ( priority: 2, used 750 ms of 750 ms, blocked 3 times, used before blocking: 150 ms of 200 ms )
+
+
+RUNTIME: 2110 ms
+Queues:
+Priority 4: 
+Priority 3: 
+Priority 2: 
+Priority 1: 2 
+Priority 0: 
+
+Blocked processes: 5(10279ms)  
+
+2310 ms, Process 2 I/O blocked ( priority: 1, used 1000 ms of 1500 ms, blocked 5 times, used before blocking: 200 ms of 200 ms )
+
+
+RUNTIME: 2310 ms
+Queues:
+Priority 4: 
+Priority 3: 
+Priority 2: 
+Priority 1: 
+Priority 0: 
+
+Blocked processes: 2(2360ms)  5(10279ms)  
+
+No ready processes, waiting for blocked processes...
+
+RUNTIME: 2360 ms
+Queues:
+Priority 4: 
+Priority 3: 
+Priority 2: 
+Priority 1: 2 
+Priority 0: 
+
+Blocked processes: 5(10279ms)  
+
+2560 ms, Process 2 I/O blocked ( priority: 1, used 1200 ms of 1500 ms, blocked 6 times, used before blocking: 200 ms of 200 ms )
+
+
+RUNTIME: 2560 ms
+Queues:
+Priority 4: 
+Priority 3: 
+Priority 2: 
+Priority 1: 
+Priority 0: 
+
+Blocked processes: 2(2610ms)  5(10279ms)  
+
+No ready processes, waiting for blocked processes...
+
+RUNTIME: 2610 ms
+Queues:
+Priority 4: 
+Priority 3: 
+Priority 2: 
+Priority 1: 2 
+Priority 0: 
+
+Blocked processes: 5(10279ms)  
+
+2810 ms, Process 2 I/O blocked ( priority: 1, used 1400 ms of 1500 ms, blocked 7 times, used before blocking: 200 ms of 200 ms )
+
+
+RUNTIME: 2810 ms
+Queues:
+Priority 4: 
+Priority 3: 
+Priority 2: 
+Priority 1: 
+Priority 0: 
+
+Blocked processes: 2(2860ms)  5(10279ms)  
+
+No ready processes, waiting for blocked processes...
+
+RUNTIME: 2860 ms
+Queues:
+Priority 4: 
+Priority 3: 
+Priority 2: 
+Priority 1: 2 
+Priority 0: 
+
+Blocked processes: 5(10279ms)  
+
+2960 ms, Process 2 is done ( priority: 1, used 1500 ms of 1500 ms, blocked 7 times, used before blocking: 100 ms of 200 ms )
+
+
+RUNTIME: 2960 ms
+Queues:
+Priority 4: 
+Priority 3: 
+Priority 2: 
+Priority 1: 
+Priority 0: 
+
+Blocked processes: 5(10279ms)  
+
+Simulator finished, because all processes are done, and blocked processes won't awake before maxRuntime

@@ -46,7 +46,7 @@ public class Process {
 
         state = State.RUNNING;
         while(true){
-            // there make business process really should do
+            // this line is for business process really should do
 
             usedBurstTime++;
             usedTimeBeforeBlocking++;
@@ -111,6 +111,9 @@ public class Process {
     public int getPeriodBeforeBlocking(){
         return this.periodBeforeBlocking;
     }
+    public void resetUsedTimeBeforeBlocking(){
+        this.usedTimeBeforeBlocking = 0;
+    }
 
     public enum State{
         RUNNING,
@@ -121,7 +124,14 @@ public class Process {
     public static class ComparatorByAwakeTime implements Comparator<Process> {
         @Override
         public int compare(Process a, Process b){
-            return Integer.compare(a.getAwakeTime(), b.getAwakeTime());
+            int result = Integer.compare(a.getAwakeTime(), b.getAwakeTime());
+            if(result == 0){
+                return Integer.compare(a.getId(), b.getId());
+            }
+            else{
+                return result;
+            }
+
         }
     }
 }
