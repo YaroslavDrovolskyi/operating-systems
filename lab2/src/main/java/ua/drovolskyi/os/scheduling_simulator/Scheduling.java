@@ -1,7 +1,7 @@
 // This file contains the main() function for the Scheduling
 // simulation.  Init() initializes most of the variables by
 // reading from a provided file.  SchedulingAlgorithm.Run() is
-// called from main() to run the simulation.  Summary-Results
+// called from main() to run the simulation.  Summary-Result
 // is where the summary results are written, and Summary-Processes
 // is where the process scheduling summary is written.
 
@@ -13,84 +13,120 @@ import java.io.*;
 import java.util.*;
 
 public class Scheduling {
+    private static int numberOfProcesses = 5;
+    private static int runtimeAverage = 1000;
+    private static int runtimeStandardDeviation = 100;
+    private static int resetPrioritiesPeriod = 2000;
+    private static int quantumDuration = 25;
+    private static int maxRuntime = 1000;
+    private static int processIdCount = 0;
+    private static List<Process> processes = new LinkedList<>();
+    private static String resultsFilePath = "summary-results.txt";
 
-    private static int processnum = 5;
-    private static int meanDev = 1000;
-    private static int standardDev = 100;
-    private static int runtime = 1000;
-    private static Vector processVector = new Vector();
-    private static Results result = new Results("null","null",0);
-    private static String resultsFile = "Summary-Results";
-
-    private static void Init(String file) {
-        File f = new File(file);
-        String line;
-        String tmp;
-        int cputime = 0;
-        int ioblocking = 0;
-        double X = 0.0;
-
+    private static void initialize(String inputFilePath) {
+        Scanner scanner = null;
         try {
-            //BufferedReader in = new BufferedReader(new FileReader(f));
-            DataInputStream in = new DataInputStream(new FileInputStream(f));
-            while ((line = in.readLine()) != null) {
-                if (line.startsWith("numprocess")) {
-                    StringTokenizer st = new StringTokenizer(line);
-                    st.nextToken();
-                    processnum = Common.s2i(st.nextToken());
+            scanner = new Scanner(new File(inputFilePath));
+            while(scanner.hasNext()){
+                String token = scanner.next();
+                if(token.equals("//")){
+                    scanner.nextLine();
+                    continue;
                 }
-                if (line.startsWith("meandev")) {
-                    StringTokenizer st = new StringTokenizer(line);
-                    st.nextToken();
-                    meanDev = Common.s2i(st.nextToken());
-                }
-                if (line.startsWith("standdev")) {
-                    StringTokenizer st = new StringTokenizer(line);
-                    st.nextToken();
-                    standardDev = Common.s2i(st.nextToken());
-                }
-                if (line.startsWith("process")) {
-                    StringTokenizer st = new StringTokenizer(line);
-                    st.nextToken();
-                    ioblocking = Common.s2i(st.nextToken());
-                    X = Common.R1();
-                    while (X == -1.0) {
-                        X = Common.R1();
+                switch (token){
+                    case "number_of_processes":
+                        numberOfProcesses = scanner.nextInt();
+                        if(numberOfProcesses <= 0){
+                            throw new IllegalArgumentException("number_of_processes must be > 0");
+                        }
+                        break;
+                    case "max_runtime":
+                        maxRuntime = scanner.nextInt();
+                        if(maxRuntime <= 0){
+                            throw new IllegalArgumentException("max_runtime must be > 0");
+                        }
+                        break;
+                    case "reset_priorities_period":
+                        resetPrioritiesPeriod = scanner.nextInt();
+                        if(resetPrioritiesPeriod <= 0){
+                            throw new IllegalArgumentException("reset_priorities_period must be > 0");
+                        }
+                        break;
+                    case "quantum_duration":
+                        quantumDuration = scanner.nextInt();
+                        if(quantumDuration <= 0){
+                            throw new IllegalArgumentException("quantum_duration must be > 0");
+                        }
+                        break;
+                    case "runtime_average":
+                        runtimeAverage = scanner.nextInt();
+                        if(runtimeAverage <= 0){
+                            throw new IllegalArgumentException("runtime_average must be > 0");
+                        }
+                        break;
+                    case "runtime_std_deviation":
+                        runtimeStandardDeviation = scanner.nextInt();
+                        if(runtimeStandardDeviation < 0){
+                            throw new IllegalArgumentException("runtime_average must be >= 0");
+                        }
+                        break;
+
+                    case "process":{
+                        double X = Common.R1();
+                        while (X == -1.0) {
+                            X = Common.R1();
+                        }
+                        X *= runtimeStandardDeviation;
+                        int requiredRuntime = (int) X + runtimeAverage;
+                        processes.add(new Process(processIdCount, requiredRuntime, scanner.nextInt(), scanner.nextInt()));
+                        processIdCount++;
+                        break;
                     }
-                    X = X * standardDev;
-                    cputime = (int) X + meanDev;
-                    processVector.addElement(new sProcess(cputime, ioblocking, 0, 0, 0));
-                }
-                if (line.startsWith("runtime")) {
-                    StringTokenizer st = new StringTokenizer(line);
-                    st.nextToken();
-                    runtime = Common.s2i(st.nextToken());
+                    default:
+                        break;
                 }
             }
-            in.close();
-        } catch (IOException e) { /* Handle exceptions */ }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } finally{
+            if (scanner != null){
+                scanner.close();
+            }
+        }
+
+        // if user not specified some processes, generate random processes
+        while (processes.size() < numberOfProcesses) {
+            double X = Common.R1();
+            while (X == -1.0) {
+                X = Common.R1();
+            }
+            X *= runtimeStandardDeviation;
+            int requiredRuntime = (int) X + runtimeAverage;
+            processes.add(new Process(processIdCount, requiredRuntime,
+                    processIdCount*100 + 1, processIdCount*10));
+            processIdCount++;
+        }
     }
 
     private static void debug() {
-        int i = 0;
+        System.out.println("number_of_processes: " + numberOfProcesses);
+        System.out.println("max_runtime " + maxRuntime);
+        System.out.println("reset_priorities_period " + resetPrioritiesPeriod);
+        System.out.println("quantum_duration " + quantumDuration);
+        System.out.println("runtime_average " + runtimeAverage);
+        System.out.println("runtime_std_deviation: " + runtimeStandardDeviation);
 
-        System.out.println("processnum " + processnum);
-        System.out.println("meandevm " + meanDev);
-        System.out.println("standdev " + standardDev);
-        int size = processVector.size();
-        for (i = 0; i < size; i++) {
-            sProcess process = (sProcess) processVector.elementAt(i);
-            System.out.println("process " + i + " " + process.cputime + " " + process.ioblocking + " " + process.cpudone + " " + process.numblocked);
+        for(Process p : processes){
+            System.out.println("Process " + p.getId() + "  ( " + p.getRequiredTime() + " ms, " +
+            p.getPeriodBeforeBlocking() + " ms, " + p.getBlockingPeriod() + " )");
         }
-        System.out.println("runtime " + runtime);
     }
 
     public static void main(String[] args) {
-        int i = 0;
-        args = new String[]{"src/main/resources/scheduling.conf"};
+//        args = new String[]{"src/main/resources/scheduling.conf"};
 
         if (args.length != 1) {
-            System.out.println("Usage: 'java Scheduling <INIT FILE>'");
+            System.out.println("Usage: 'java [executable file] <INIT FILE>'");
             System.exit(-1);
         }
         File f = new File(args[0]);
@@ -103,68 +139,48 @@ public class Scheduling {
             System.exit(-1);
         }
         System.out.println("Working...");
-        Init(args[0]);
-        if (processVector.size() < processnum) {
-            i = 0;
-            while (processVector.size() < processnum) {
-                double X = Common.R1();
-                while (X == -1.0) {
-                    X = Common.R1();
-                }
-                X = X * standardDev;
-                int cputime = (int) X + meanDev;
-                processVector.addElement(new sProcess(cputime,i*100,0,0,0));
-                i++;
-            }
-        }
-        //        result = SchedulingAlgorithm.Run(runtime, processVector, result);
 
 
-        //For debug
-        ////////////////////////////////////////////////////////////////////////
-        List<Process> processes = new LinkedList<>();
-        processes.add(new Process(1, 10, 2, 150));
-        processes.add(new Process(2, 1500, 200, 50));
-        processes.add(new Process(3, 500, 200, 100));
-        processes.add(new Process(4, 750, 200, 150));
-        processes.add(new Process(5, 100, 50, 10000));
+        initialize(args[0]);
 
         SchedulingAlgorithm algorithm = new SchedulingAlgorithm(
-                5001, 2000, 25,
-                "src/main/resources/summary-processes.txt",
-                "src/main/resources/debug-processes.txt");
+                maxRuntime, resetPrioritiesPeriod, quantumDuration,
+                "summary-processes.txt",
+                "debug-processes.txt");
+
+        Result result = null;
         try {
-            algorithm.run(processes);
+            result = algorithm.run(processes);
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
 
 
-        // ////////////////////////////////////////////////////////////////////////////////////////////////
-        // print results using: results returned by algorithm, input data, initial list of processes
+        // print summary into summary-results file
         try {
-            //BufferedWriter out = new BufferedWriter(new FileWriter(resultsFile));
-            PrintStream out = new PrintStream(new FileOutputStream(resultsFile));
-            out.println("Scheduling Type: " + result.schedulingType);
-            out.println("Scheduling Name: " + result.schedulingName);
-            out.println("Simulation Run Time: " + result.compuTime);
-            out.println("Mean: " + meanDev);
-            out.println("Standard Deviation: " + standardDev);
-            out.println("Process #\tCPU Time\tIO Blocking\tCPU Completed\tCPU Blocked");
-            for (i = 0; i < processVector.size(); i++) {
-                sProcess process = (sProcess) processVector.elementAt(i);
-                out.print(Integer.toString(i));
-                if (i < 100) { out.print("\t\t"); } else { out.print("\t"); }
-                out.print(Integer.toString(process.cputime));
-                if (process.cputime < 100) { out.print(" (ms)\t\t"); } else { out.print(" (ms)\t"); }
-                out.print(Integer.toString(process.ioblocking));
-                if (process.ioblocking < 100) { out.print(" (ms)\t\t"); } else { out.print(" (ms)\t"); }
-                out.print(Integer.toString(process.cpudone));
-                if (process.cpudone < 100) { out.print(" (ms)\t\t"); } else { out.print(" (ms)\t"); }
-                out.println(process.numblocked + " times");
+            PrintStream out = new PrintStream(new FileOutputStream(resultsFilePath));
+            out.println("Scheduling algorithm Type: " + result.getAlgorithmType());
+            out.println("Scheduling algorithm Name: " + result.getAlgorithmName());
+            out.println("Simulation Run Time: " + result.getRuntime());
+            out.println("Number of done processes: " + result.getFinishedProcessesNumber());
+            out.println("requiredRuntime average: " + runtimeAverage);
+            out.println("requiredRuntime standard deviation: " + runtimeStandardDeviation);
+            out.println("Process ID |\tRequired CPU time |\tUsed CPU time |\tis done |\tPeriod before IO Blocking |\tBlocking count");
+
+            for (Process p : processes) {
+                out.println(
+                        p.getId() + "\t\t\t\t" +
+                        p.getRequiredTime() + " ms \t\t\t\t" +
+                        p.getUsedTime() + " ms \t\t\t" + p.isDone() + " \t\t" +
+                        p.getPeriodBeforeBlocking() + " ms \t\t" +
+                        p.getBlockingsCount() + " times"
+                );
             }
             out.close();
-        } catch (IOException e) { /* Handle exceptions */ }
+        } catch (IOException e) {
+            System.out.println("IO error occurred");
+            throw new RuntimeException(e);
+        }
 
         System.out.println("Completed.");
     }

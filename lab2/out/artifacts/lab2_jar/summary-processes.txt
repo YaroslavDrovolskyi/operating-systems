@@ -1,0 +1,273 @@
+0 ms, Process 0 picked by scheduler, burst: 50 ms ( priority: 4, used 0 ms of 738 ms, blocked 0 times, used before blocking: 0 ms of 200 ms )
+50 ms, Process 0 used burst ( priority: 3, used 50 ms of 738 ms, blocked 0 times, used before blocking: 50 ms of 200 ms )
+
+
+50 ms, Process 1 picked by scheduler, burst: 50 ms ( priority: 4, used 0 ms of 801 ms, blocked 0 times, used before blocking: 0 ms of 200 ms )
+100 ms, Process 1 used burst ( priority: 3, used 50 ms of 801 ms, blocked 0 times, used before blocking: 50 ms of 200 ms )
+
+
+100 ms, Process 2 picked by scheduler, burst: 50 ms ( priority: 4, used 0 ms of 801 ms, blocked 0 times, used before blocking: 0 ms of 5 ms )
+105 ms, Process 2 I/O blocked ( priority: 4, used 5 ms of 801 ms, blocked 1 times, used before blocking: 5 ms of 5 ms )
+
+
+105 ms, Process 3 picked by scheduler, burst: 50 ms ( priority: 4, used 0 ms of 801 ms, blocked 0 times, used before blocking: 0 ms of 200 ms )
+155 ms, Process 3 used burst ( priority: 3, used 50 ms of 801 ms, blocked 0 times, used before blocking: 50 ms of 200 ms )
+
+
+155 ms, Process 4 picked by scheduler, burst: 50 ms ( priority: 4, used 0 ms of 698 ms, blocked 0 times, used before blocking: 0 ms of 5 ms )
+160 ms, Process 4 I/O blocked ( priority: 4, used 5 ms of 698 ms, blocked 1 times, used before blocking: 5 ms of 5 ms )
+
+
+160 ms, Process 0 picked by scheduler, burst: 100 ms ( priority: 3, used 50 ms of 738 ms, blocked 0 times, used before blocking: 50 ms of 200 ms )
+260 ms, Process 0 used burst ( priority: 2, used 150 ms of 738 ms, blocked 0 times, used before blocking: 150 ms of 200 ms )
+
+
+260 ms, Process 2 picked by scheduler, burst: 50 ms ( priority: 4, used 5 ms of 801 ms, blocked 1 times, used before blocking: 0 ms of 5 ms )
+265 ms, Process 2 I/O blocked ( priority: 4, used 10 ms of 801 ms, blocked 2 times, used before blocking: 5 ms of 5 ms )
+
+
+265 ms, Process 1 picked by scheduler, burst: 100 ms ( priority: 3, used 50 ms of 801 ms, blocked 0 times, used before blocking: 50 ms of 200 ms )
+365 ms, Process 1 used burst ( priority: 2, used 150 ms of 801 ms, blocked 0 times, used before blocking: 150 ms of 200 ms )
+
+
+365 ms, Process 3 picked by scheduler, burst: 100 ms ( priority: 3, used 50 ms of 801 ms, blocked 0 times, used before blocking: 50 ms of 200 ms )
+465 ms, Process 3 used burst ( priority: 2, used 150 ms of 801 ms, blocked 0 times, used before blocking: 150 ms of 200 ms )
+
+
+465 ms, Process 2 picked by scheduler, burst: 50 ms ( priority: 4, used 10 ms of 801 ms, blocked 2 times, used before blocking: 0 ms of 5 ms )
+470 ms, Process 2 I/O blocked ( priority: 4, used 15 ms of 801 ms, blocked 3 times, used before blocking: 5 ms of 5 ms )
+
+
+470 ms, Process 0 picked by scheduler, burst: 200 ms ( priority: 2, used 150 ms of 738 ms, blocked 0 times, used before blocking: 150 ms of 200 ms )
+520 ms, Process 0 I/O blocked ( priority: 2, used 200 ms of 738 ms, blocked 1 times, used before blocking: 200 ms of 200 ms )
+
+
+520 ms, Process 1 picked by scheduler, burst: 200 ms ( priority: 2, used 150 ms of 801 ms, blocked 0 times, used before blocking: 150 ms of 200 ms )
+570 ms, Process 1 I/O blocked ( priority: 2, used 200 ms of 801 ms, blocked 1 times, used before blocking: 200 ms of 200 ms )
+
+
+570 ms, Process 3 picked by scheduler, burst: 200 ms ( priority: 2, used 150 ms of 801 ms, blocked 0 times, used before blocking: 150 ms of 200 ms )
+620 ms, Process 3 I/O blocked ( priority: 2, used 200 ms of 801 ms, blocked 1 times, used before blocking: 200 ms of 200 ms )
+
+
+620 ms, Process 2 picked by scheduler, burst: 50 ms ( priority: 4, used 15 ms of 801 ms, blocked 3 times, used before blocking: 0 ms of 5 ms )
+625 ms, Process 2 I/O blocked ( priority: 4, used 20 ms of 801 ms, blocked 4 times, used before blocking: 5 ms of 5 ms )
+
+
+625 ms, Process 0 picked by scheduler, burst: 200 ms ( priority: 2, used 200 ms of 738 ms, blocked 1 times, used before blocking: 0 ms of 200 ms )
+825 ms, Process 0 I/O blocked ( priority: 2, used 400 ms of 738 ms, blocked 2 times, used before blocking: 200 ms of 200 ms )
+
+
+825 ms, Process 2 picked by scheduler, burst: 50 ms ( priority: 4, used 20 ms of 801 ms, blocked 4 times, used before blocking: 0 ms of 5 ms )
+830 ms, Process 2 I/O blocked ( priority: 4, used 25 ms of 801 ms, blocked 5 times, used before blocking: 5 ms of 5 ms )
+
+
+830 ms, Process 3 picked by scheduler, burst: 170 ms ( priority: 2, used 200 ms of 801 ms, blocked 1 times, used before blocking: 0 ms of 200 ms )
+1000 ms, Process 3 used burst ( priority: 1, used 370 ms of 801 ms, blocked 1 times, used before blocking: 170 ms of 200 ms )
+
+
+1000 ms, Reset priority
+1000 ms, Process 2 picked by scheduler, burst: 50 ms ( priority: 4, used 25 ms of 801 ms, blocked 5 times, used before blocking: 0 ms of 5 ms )
+1005 ms, Process 2 I/O blocked ( priority: 4, used 30 ms of 801 ms, blocked 6 times, used before blocking: 5 ms of 5 ms )
+
+
+1005 ms, Process 1 picked by scheduler, burst: 50 ms ( priority: 4, used 200 ms of 801 ms, blocked 1 times, used before blocking: 0 ms of 200 ms )
+1055 ms, Process 1 used burst ( priority: 3, used 250 ms of 801 ms, blocked 1 times, used before blocking: 50 ms of 200 ms )
+
+
+1055 ms, Process 0 picked by scheduler, burst: 50 ms ( priority: 4, used 400 ms of 738 ms, blocked 2 times, used before blocking: 0 ms of 200 ms )
+1105 ms, Process 0 used burst ( priority: 3, used 450 ms of 738 ms, blocked 2 times, used before blocking: 50 ms of 200 ms )
+
+
+1105 ms, Process 3 picked by scheduler, burst: 50 ms ( priority: 4, used 370 ms of 801 ms, blocked 1 times, used before blocking: 170 ms of 200 ms )
+1135 ms, Process 3 I/O blocked ( priority: 4, used 400 ms of 801 ms, blocked 2 times, used before blocking: 200 ms of 200 ms )
+
+
+1135 ms, Process 1 picked by scheduler, burst: 100 ms ( priority: 3, used 250 ms of 801 ms, blocked 1 times, used before blocking: 50 ms of 200 ms )
+1235 ms, Process 1 used burst ( priority: 2, used 350 ms of 801 ms, blocked 1 times, used before blocking: 150 ms of 200 ms )
+
+
+1235 ms, Process 3 picked by scheduler, burst: 50 ms ( priority: 4, used 400 ms of 801 ms, blocked 2 times, used before blocking: 0 ms of 200 ms )
+1285 ms, Process 3 used burst ( priority: 3, used 450 ms of 801 ms, blocked 2 times, used before blocking: 50 ms of 200 ms )
+
+
+1285 ms, Process 2 picked by scheduler, burst: 50 ms ( priority: 4, used 30 ms of 801 ms, blocked 6 times, used before blocking: 0 ms of 5 ms )
+1290 ms, Process 2 I/O blocked ( priority: 4, used 35 ms of 801 ms, blocked 7 times, used before blocking: 5 ms of 5 ms )
+
+
+1290 ms, Process 0 picked by scheduler, burst: 100 ms ( priority: 3, used 450 ms of 738 ms, blocked 2 times, used before blocking: 50 ms of 200 ms )
+1390 ms, Process 0 used burst ( priority: 2, used 550 ms of 738 ms, blocked 2 times, used before blocking: 150 ms of 200 ms )
+
+
+1390 ms, Process 3 picked by scheduler, burst: 100 ms ( priority: 3, used 450 ms of 801 ms, blocked 2 times, used before blocking: 50 ms of 200 ms )
+1490 ms, Process 3 used burst ( priority: 2, used 550 ms of 801 ms, blocked 2 times, used before blocking: 150 ms of 200 ms )
+
+
+1490 ms, Process 2 picked by scheduler, burst: 50 ms ( priority: 4, used 35 ms of 801 ms, blocked 7 times, used before blocking: 0 ms of 5 ms )
+1495 ms, Process 2 I/O blocked ( priority: 4, used 40 ms of 801 ms, blocked 8 times, used before blocking: 5 ms of 5 ms )
+
+
+1495 ms, Process 1 picked by scheduler, burst: 200 ms ( priority: 2, used 350 ms of 801 ms, blocked 1 times, used before blocking: 150 ms of 200 ms )
+1545 ms, Process 1 I/O blocked ( priority: 2, used 400 ms of 801 ms, blocked 2 times, used before blocking: 200 ms of 200 ms )
+
+
+1545 ms, Process 0 picked by scheduler, burst: 200 ms ( priority: 2, used 550 ms of 738 ms, blocked 2 times, used before blocking: 150 ms of 200 ms )
+1595 ms, Process 0 I/O blocked ( priority: 2, used 600 ms of 738 ms, blocked 3 times, used before blocking: 200 ms of 200 ms )
+
+
+1595 ms, Process 3 picked by scheduler, burst: 200 ms ( priority: 2, used 550 ms of 801 ms, blocked 2 times, used before blocking: 150 ms of 200 ms )
+1645 ms, Process 3 I/O blocked ( priority: 2, used 600 ms of 801 ms, blocked 3 times, used before blocking: 200 ms of 200 ms )
+
+
+1645 ms, Process 2 picked by scheduler, burst: 50 ms ( priority: 4, used 40 ms of 801 ms, blocked 8 times, used before blocking: 0 ms of 5 ms )
+1650 ms, Process 2 I/O blocked ( priority: 4, used 45 ms of 801 ms, blocked 9 times, used before blocking: 5 ms of 5 ms )
+
+
+1650 ms, Process 0 picked by scheduler, burst: 200 ms ( priority: 2, used 600 ms of 738 ms, blocked 3 times, used before blocking: 0 ms of 200 ms )
+1788 ms, Process 0 is done ( priority: 2, used 738 ms of 738 ms, blocked 3 times, used before blocking: 138 ms of 200 ms )
+
+
+1788 ms, Process 1 picked by scheduler, burst: 200 ms ( priority: 2, used 400 ms of 801 ms, blocked 2 times, used before blocking: 0 ms of 200 ms )
+1988 ms, Process 1 I/O blocked ( priority: 2, used 600 ms of 801 ms, blocked 3 times, used before blocking: 200 ms of 200 ms )
+
+
+1988 ms, Process 2 picked by scheduler, burst: 12 ms ( priority: 4, used 45 ms of 801 ms, blocked 9 times, used before blocking: 0 ms of 5 ms )
+1993 ms, Process 2 I/O blocked ( priority: 4, used 50 ms of 801 ms, blocked 10 times, used before blocking: 5 ms of 5 ms )
+
+
+1993 ms, Process 3 picked by scheduler, burst: 7 ms ( priority: 2, used 600 ms of 801 ms, blocked 3 times, used before blocking: 0 ms of 200 ms )
+2000 ms, Process 3 used burst ( priority: 1, used 607 ms of 801 ms, blocked 3 times, used before blocking: 7 ms of 200 ms )
+
+
+2000 ms, Reset priority
+2000 ms, Process 3 picked by scheduler, burst: 50 ms ( priority: 4, used 607 ms of 801 ms, blocked 3 times, used before blocking: 7 ms of 200 ms )
+2050 ms, Process 3 used burst ( priority: 3, used 657 ms of 801 ms, blocked 3 times, used before blocking: 57 ms of 200 ms )
+
+
+2050 ms, Process 3 picked by scheduler, burst: 100 ms ( priority: 3, used 657 ms of 801 ms, blocked 3 times, used before blocking: 57 ms of 200 ms )
+2150 ms, Process 3 used burst ( priority: 2, used 757 ms of 801 ms, blocked 3 times, used before blocking: 157 ms of 200 ms )
+
+
+2150 ms, Process 2 picked by scheduler, burst: 50 ms ( priority: 4, used 50 ms of 801 ms, blocked 10 times, used before blocking: 0 ms of 5 ms )
+2155 ms, Process 2 I/O blocked ( priority: 4, used 55 ms of 801 ms, blocked 11 times, used before blocking: 5 ms of 5 ms )
+
+
+2155 ms, Process 3 picked by scheduler, burst: 200 ms ( priority: 2, used 757 ms of 801 ms, blocked 3 times, used before blocking: 157 ms of 200 ms )
+2198 ms, Process 3 I/O blocked ( priority: 2, used 800 ms of 801 ms, blocked 4 times, used before blocking: 200 ms of 200 ms )
+
+
+2198 ms, Process 1 picked by scheduler, burst: 200 ms ( priority: 2, used 600 ms of 801 ms, blocked 3 times, used before blocking: 0 ms of 200 ms )
+2398 ms, Process 1 I/O blocked ( priority: 2, used 800 ms of 801 ms, blocked 4 times, used before blocking: 200 ms of 200 ms )
+
+
+2398 ms, Process 2 picked by scheduler, burst: 50 ms ( priority: 4, used 55 ms of 801 ms, blocked 11 times, used before blocking: 0 ms of 5 ms )
+2403 ms, Process 2 I/O blocked ( priority: 4, used 60 ms of 801 ms, blocked 12 times, used before blocking: 5 ms of 5 ms )
+
+
+2403 ms, Process 3 picked by scheduler, burst: 200 ms ( priority: 2, used 800 ms of 801 ms, blocked 4 times, used before blocking: 0 ms of 200 ms )
+2404 ms, Process 3 is done ( priority: 2, used 801 ms of 801 ms, blocked 4 times, used before blocking: 1 ms of 200 ms )
+
+
+No ready processes, waiting for blocked processes...
+
+2498 ms, Process 1 picked by scheduler, burst: 200 ms ( priority: 2, used 800 ms of 801 ms, blocked 4 times, used before blocking: 0 ms of 200 ms )
+2499 ms, Process 1 is done ( priority: 2, used 801 ms of 801 ms, blocked 4 times, used before blocking: 1 ms of 200 ms )
+
+
+No ready processes, waiting for blocked processes...
+
+2553 ms, Process 2 picked by scheduler, burst: 50 ms ( priority: 4, used 60 ms of 801 ms, blocked 12 times, used before blocking: 0 ms of 5 ms )
+2558 ms, Process 2 I/O blocked ( priority: 4, used 65 ms of 801 ms, blocked 13 times, used before blocking: 5 ms of 5 ms )
+
+
+No ready processes, waiting for blocked processes...
+
+2708 ms, Process 2 picked by scheduler, burst: 50 ms ( priority: 4, used 65 ms of 801 ms, blocked 13 times, used before blocking: 0 ms of 5 ms )
+2713 ms, Process 2 I/O blocked ( priority: 4, used 70 ms of 801 ms, blocked 14 times, used before blocking: 5 ms of 5 ms )
+
+
+No ready processes, waiting for blocked processes...
+
+2863 ms, Process 2 picked by scheduler, burst: 50 ms ( priority: 4, used 70 ms of 801 ms, blocked 14 times, used before blocking: 0 ms of 5 ms )
+2868 ms, Process 2 I/O blocked ( priority: 4, used 75 ms of 801 ms, blocked 15 times, used before blocking: 5 ms of 5 ms )
+
+
+No ready processes, waiting for blocked processes...
+
+3018 ms, Process 2 picked by scheduler, burst: -18 ms ( priority: 4, used 75 ms of 801 ms, blocked 15 times, used before blocking: 0 ms of 5 ms )
+3023 ms, Process 2 I/O blocked ( priority: 4, used 80 ms of 801 ms, blocked 16 times, used before blocking: 5 ms of 5 ms )
+
+
+No ready processes, waiting for blocked processes...
+
+3173 ms, Process 2 picked by scheduler, burst: -173 ms ( priority: 4, used 80 ms of 801 ms, blocked 16 times, used before blocking: 0 ms of 5 ms )
+3178 ms, Process 2 I/O blocked ( priority: 4, used 85 ms of 801 ms, blocked 17 times, used before blocking: 5 ms of 5 ms )
+
+
+No ready processes, waiting for blocked processes...
+
+3328 ms, Process 2 picked by scheduler, burst: -328 ms ( priority: 4, used 85 ms of 801 ms, blocked 17 times, used before blocking: 0 ms of 5 ms )
+3333 ms, Process 2 I/O blocked ( priority: 4, used 90 ms of 801 ms, blocked 18 times, used before blocking: 5 ms of 5 ms )
+
+
+No ready processes, waiting for blocked processes...
+
+3483 ms, Process 2 picked by scheduler, burst: -483 ms ( priority: 4, used 90 ms of 801 ms, blocked 18 times, used before blocking: 0 ms of 5 ms )
+3488 ms, Process 2 I/O blocked ( priority: 4, used 95 ms of 801 ms, blocked 19 times, used before blocking: 5 ms of 5 ms )
+
+
+No ready processes, waiting for blocked processes...
+
+3638 ms, Process 2 picked by scheduler, burst: -638 ms ( priority: 4, used 95 ms of 801 ms, blocked 19 times, used before blocking: 0 ms of 5 ms )
+3643 ms, Process 2 I/O blocked ( priority: 4, used 100 ms of 801 ms, blocked 20 times, used before blocking: 5 ms of 5 ms )
+
+
+No ready processes, waiting for blocked processes...
+
+3793 ms, Process 2 picked by scheduler, burst: -793 ms ( priority: 4, used 100 ms of 801 ms, blocked 20 times, used before blocking: 0 ms of 5 ms )
+3798 ms, Process 2 I/O blocked ( priority: 4, used 105 ms of 801 ms, blocked 21 times, used before blocking: 5 ms of 5 ms )
+
+
+No ready processes, waiting for blocked processes...
+
+3948 ms, Process 2 picked by scheduler, burst: -948 ms ( priority: 4, used 105 ms of 801 ms, blocked 21 times, used before blocking: 0 ms of 5 ms )
+3953 ms, Process 2 I/O blocked ( priority: 4, used 110 ms of 801 ms, blocked 22 times, used before blocking: 5 ms of 5 ms )
+
+
+No ready processes, waiting for blocked processes...
+
+4103 ms, Process 2 picked by scheduler, burst: -1103 ms ( priority: 4, used 110 ms of 801 ms, blocked 22 times, used before blocking: 0 ms of 5 ms )
+4108 ms, Process 2 I/O blocked ( priority: 4, used 115 ms of 801 ms, blocked 23 times, used before blocking: 5 ms of 5 ms )
+
+
+No ready processes, waiting for blocked processes...
+
+4258 ms, Process 2 picked by scheduler, burst: -1258 ms ( priority: 4, used 115 ms of 801 ms, blocked 23 times, used before blocking: 0 ms of 5 ms )
+4263 ms, Process 2 I/O blocked ( priority: 4, used 120 ms of 801 ms, blocked 24 times, used before blocking: 5 ms of 5 ms )
+
+
+No ready processes, waiting for blocked processes...
+
+4413 ms, Process 2 picked by scheduler, burst: -1413 ms ( priority: 4, used 120 ms of 801 ms, blocked 24 times, used before blocking: 0 ms of 5 ms )
+4418 ms, Process 2 I/O blocked ( priority: 4, used 125 ms of 801 ms, blocked 25 times, used before blocking: 5 ms of 5 ms )
+
+
+No ready processes, waiting for blocked processes...
+
+4568 ms, Process 2 picked by scheduler, burst: -1568 ms ( priority: 4, used 125 ms of 801 ms, blocked 25 times, used before blocking: 0 ms of 5 ms )
+4573 ms, Process 2 I/O blocked ( priority: 4, used 130 ms of 801 ms, blocked 26 times, used before blocking: 5 ms of 5 ms )
+
+
+No ready processes, waiting for blocked processes...
+
+4723 ms, Process 2 picked by scheduler, burst: -1723 ms ( priority: 4, used 130 ms of 801 ms, blocked 26 times, used before blocking: 0 ms of 5 ms )
+4728 ms, Process 2 I/O blocked ( priority: 4, used 135 ms of 801 ms, blocked 27 times, used before blocking: 5 ms of 5 ms )
+
+
+No ready processes, waiting for blocked processes...
+
+4878 ms, Process 2 picked by scheduler, burst: -1878 ms ( priority: 4, used 135 ms of 801 ms, blocked 27 times, used before blocking: 0 ms of 5 ms )
+4883 ms, Process 2 I/O blocked ( priority: 4, used 140 ms of 801 ms, blocked 28 times, used before blocking: 5 ms of 5 ms )
+
+
+Simulator finished, because all processes are done, and blocked processes won't awake before maxRuntime

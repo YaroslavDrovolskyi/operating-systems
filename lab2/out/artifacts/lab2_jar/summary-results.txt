@@ -1,0 +1,12 @@
+Scheduling algorithm Type: Interactive (preemptive)
+Scheduling algorithm Name: Multiple queues (Round-robin in each queue)
+Simulation Run Time: 4883
+Number of done processes: 3
+requiredRuntime average: 750
+requiredRuntime standard deviation: 50
+Process ID |	Required CPU time |	Used CPU time |	is done |	Period before IO Blocking |	Blocking count
+0				738 ms 				738 ms 			true 		200 ms 		3 times
+1				801 ms 				801 ms 			true 		200 ms 		4 times
+2				801 ms 				140 ms 			false 		5 ms 		28 times
+3				801 ms 				801 ms 			true 		200 ms 		4 times
+4				698 ms 				5 ms 			false 		5 ms 		1 times

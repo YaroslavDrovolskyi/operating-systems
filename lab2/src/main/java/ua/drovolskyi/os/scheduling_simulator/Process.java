@@ -21,6 +21,16 @@ public class Process {
         this.periodBeforeBlocking = periodBeforeBlocking;
         this.requiredTime = requiredTime;
         this.blockingPeriod = periodForBlocking;
+
+        if(requiredTime <= 0){
+            throw new IllegalArgumentException("requiredTie must be > 0");
+        }
+        if(periodBeforeBlocking <= 0){
+            throw new IllegalArgumentException("periodBeforeBlocking must be > 0");
+        }
+        if(blockingPeriod <= 0){
+            throw new IllegalArgumentException("blockingPeriod must be > 0");
+        }
     }
 
     public void setPriority(int priority) {
